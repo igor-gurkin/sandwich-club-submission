@@ -25,7 +25,7 @@ public class JsonUtils {
             String description = sandwichJSONData.getString("description");
             String image = sandwichJSONData.getString("image");
 
-            JSONArray ingridientsJSONArray = sandwichJSONData.getJSONArray("ingridients");
+            JSONArray ingridientsJSONArray = sandwichJSONData.getJSONArray("ingredients");
             ArrayList<String> ingridients = new ArrayList<String>();
             for (int i=0; i < ingridientsJSONArray.length(); i++) {
                 ingridients.add(ingridientsJSONArray.getString(i));
