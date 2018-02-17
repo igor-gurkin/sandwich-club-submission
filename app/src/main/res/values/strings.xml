@@ -128,4 +128,16 @@
         </item>
     </string-array>
 
+    <string name="dummy_description">A very long description of a very awesome sandwich! Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Nam et luctus massa. Nulla id nibh condimentum, vestibulum ex vel, faucibus libero. Maecenas dictum accumsan odio vitae mattis. Nulla facilisi.
+        Donec id dignissim lorem. Suspendisse potenti. Maecenas magna magna, condimentum id eros quis, volutpat mattis ante. Nullam at felis at libero
+        faucibus dapibus. Nulla molestie, massa vitae imperdiet dictum, magna dui dictum nisl, quis consequat ligula lorem vitae risus. Pellentesque
+        sagittis sed velit ac accumsan.</string>
+
+    <string name="dummy_also_known_as">Other name for this awesome sandwich</string>
+
+    <string name="dummy_ingridients">Meet, cheese, lettuce, other stuff...</string>
+
+    <string name="dummy_place_of_origin">Our famous awesome kitchen</string>
+
 </resources>

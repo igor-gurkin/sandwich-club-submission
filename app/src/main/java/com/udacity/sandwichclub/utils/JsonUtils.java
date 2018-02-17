@@ -40,12 +40,7 @@ public class JsonUtils {
 
         } catch(Exception e) {
             e.printStackTrace();
-            return new Sandwich("Data Error",
-                    new ArrayList<String>(),
-                    "",
-                    "",
-                    "",
-                    new ArrayList<String>());
+            return null;
         }
 
     }
