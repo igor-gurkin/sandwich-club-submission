@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
+
+import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -45,7 +48,7 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
-        populateUI();
+        populateUI(sandwich);
         Picasso.with(this)
                 .load(sandwich.getImage())
                 .into(ingredientsIv);
@@ -58,7 +61,29 @@ public class DetailActivity extends AppCompatActivity {
         Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();
     }
 
-    private void populateUI() {
+    private void populateUI(Sandwich sandwich) {
+        TextView alsoKnownTextView = (TextView) findViewById(R.id.also_known_tv);
+        TextView ingredientsTextView = (TextView) findViewById(R.id.ingredients_tv);
+        TextView originTextView = (TextView) findViewById(R.id.origin_tv);
+        TextView descriptionTextView = (TextView) findViewById(R.id.description_tv);
 
+        originTextView.setText(sandwich.getPlaceOfOrigin());
+        descriptionTextView.setText(sandwich.getDescription());
+
+        ArrayList<String> alsoKnownList = (ArrayList<String>) sandwich.getAlsoKnownAs();
+        StringBuffer alsoKnown = new StringBuffer("");
+        for (int i=0; i < alsoKnownList.size(); i++) {
+            if (i != 0) alsoKnown.append(", ");
+            alsoKnown.append(alsoKnownList.get(i));
+        }
+        alsoKnownTextView.setText(alsoKnown);
+
+        ArrayList<String> ingredientsList = (ArrayList<String>) sandwich.getIngredients();
+        StringBuffer ingredients = new StringBuffer("");
+        for (int i=0; i < ingredientsList.size(); i++) {
+            if (i != 0) ingredients.append(", ");
+            ingredients.append(ingredientsList.get(i));
+        }
+        ingredientsTextView.setText(ingredients);
     }
 }
