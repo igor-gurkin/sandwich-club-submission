@@ -11,7 +11,7 @@ import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -67,23 +67,25 @@ public class DetailActivity extends AppCompatActivity {
         TextView originTextView = (TextView) findViewById(R.id.origin_tv);
         TextView descriptionTextView = (TextView) findViewById(R.id.description_tv);
 
+        alsoKnownTextView.setText(parseListToString(sandwich.getAlsoKnownAs()));
+        ingredientsTextView.setText(parseListToString(sandwich.getIngredients()));
         originTextView.setText(sandwich.getPlaceOfOrigin());
         descriptionTextView.setText(sandwich.getDescription());
-
-        ArrayList<String> alsoKnownList = (ArrayList<String>) sandwich.getAlsoKnownAs();
-        StringBuffer alsoKnown = new StringBuffer("");
-        for (int i=0; i < alsoKnownList.size(); i++) {
-            if (i != 0) alsoKnown.append(", ");
-            alsoKnown.append(alsoKnownList.get(i));
-        }
-        alsoKnownTextView.setText(alsoKnown);
-
-        ArrayList<String> ingredientsList = (ArrayList<String>) sandwich.getIngredients();
-        StringBuffer ingredients = new StringBuffer("");
-        for (int i=0; i < ingredientsList.size(); i++) {
-            if (i != 0) ingredients.append(", ");
-            ingredients.append(ingredientsList.get(i));
-        }
-        ingredientsTextView.setText(ingredients);
     }
+
+    private StringBuffer parseListToString(List<String> stringList) {
+        StringBuffer string = new StringBuffer("");
+
+        if (stringList.size() > 0) {
+            for (int i = 0; i < stringList.size(); i++) {
+                if (i != 0) string.append(", ");
+                string.append(stringList.get(i));
+            }
+        } else {
+            string.append("No information available");
+        }
+
+        return string;
+    }
+
 }
